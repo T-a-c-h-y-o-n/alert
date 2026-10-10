@@ -1,6 +1,6 @@
 # ALERT - FDA Import Alert Exposure Report
 
-Source-linked overview of public FDA Import Alert records for importer and compliance research. $149 one-time PDF report (up to 25 verified firms + audit log).
+Source-linked overview of public FDA Import Alert records for importer and compliance research. $99 one-time PDF report (up to 25 verified firms + audit log).
 
 ## Data
 

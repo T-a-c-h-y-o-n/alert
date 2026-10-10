@@ -128,7 +128,7 @@
     g.addEventListener("click", function (e) {
       if (g.getAttribute("data-pending") === "true") {
         e.preventDefault();
-        alert("Purchase link pending: the $149 Gumroad product has not been created yet.");
+        alert("Purchase link pending: the $99 Gumroad product has not been created yet.");
       }
     });
   }
