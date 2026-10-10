@@ -122,14 +122,5 @@
     });
   }
 
-  // Gumroad placeholder: inform instead of dead link
-  var g = document.getElementById("gumroad-link");
-  if (g) {
-    g.addEventListener("click", function (e) {
-      if (g.getAttribute("data-pending") === "true") {
-        e.preventDefault();
-        alert("Purchase link pending: the $99 Gumroad product has not been created yet.");
-      }
-    });
-  }
+  // Gumroad: live product link, no placeholder handler needed
 })();
