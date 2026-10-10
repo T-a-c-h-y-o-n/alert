@@ -1,10 +1,10 @@
 # ALERT - FDA Import Alert Exposure Report
 
-Source-linked overview of public FDA Import Alert records for importer and compliance research. $99 one-time PDF report (up to 25 verified firms + audit log).
+Source-linked overview of public FDA Import Alert records for importer and compliance research. $99 one-time PDF report (up to 30 verified firms + audit log).
 
 ## Data
 
-- 20 verified rows from official FDA pages: IA 16-119 (fish & fishery) + IA 16-124 (aquaculture drugs), Red List only.
+- 30 verified rows from official FDA pages: IA 16-119 (fish & fishery) + IA 16-124 (aquaculture drugs), Red List only.
 - Every row carries its FDA source URL, record date, and check date (`data/firms_raw.csv`, cutoff 2026-10-10).
 
 ## Structure
