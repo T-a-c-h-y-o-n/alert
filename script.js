@@ -101,7 +101,24 @@
         return;
       }
       if (iok) { iok.hidden = false; iok.textContent = "Sending..."; }
-      iform.submit();
+      var isubmit = document.getElementById("interest-submit");
+      if (isubmit) isubmit.disabled = true;
+      fetch(iform.action, {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email, _gotcha: "" })
+      }).then(function (r) {
+        if (!r.ok) throw new Error("bad status " + r.status);
+        return r.json();
+      }).then(function () {
+        if (iok) { iok.hidden = false; iok.textContent = "Your message has been sent. We will email you the sample shortly."; }
+        iform.reset();
+        if (isubmit) isubmit.disabled = false;
+      }).catch(function () {
+        if (iok) iok.hidden = true;
+        if (ierr) { ierr.hidden = false; ierr.textContent = "Something went wrong sending your request. Please try again."; }
+        if (isubmit) isubmit.disabled = false;
+      });
     });
   }
 
