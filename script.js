@@ -76,7 +76,34 @@
     }
   } catch (e) { /* no-JS stays visible via CSS fallback */ }
 
-  // Interest form submits to the configured Formspree endpoint (plain POST).
+  // Interest form: validate first, submit only on a real-looking email.
+  // Empty or malformed address -> error shown, nothing is sent.
+  // Honeypot filled (bot) -> fake success shown, nothing is sent.
+  var iform = document.getElementById("interest-form");
+  if (iform) {
+    var iemail = document.getElementById("interest-email");
+    var itrap = document.getElementById("interest-company");
+    var ierr = document.getElementById("interest-error");
+    var iok = document.getElementById("interest-ok");
+    iform.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = (iemail && iemail.value || "").trim();
+      if (ierr) ierr.hidden = true;
+      if (iok) iok.hidden = true;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        if (iemail) { iemail.setAttribute("aria-invalid", "true"); iemail.focus(); }
+        if (ierr) { ierr.hidden = false; ierr.textContent = "That email address doesn't look right. Check it and try again."; }
+        return;
+      }
+      if (iemail) iemail.removeAttribute("aria-invalid");
+      if (itrap && (itrap.value || "").trim() !== "") {
+        if (iok) { iok.hidden = false; iok.textContent = "Saved. We will send the sample shortly."; }
+        return;
+      }
+      if (iok) { iok.hidden = false; iok.textContent = "Sending..."; }
+      iform.submit();
+    });
+  }
 
   // Gumroad placeholder: inform instead of dead link
   var g = document.getElementById("gumroad-link");
